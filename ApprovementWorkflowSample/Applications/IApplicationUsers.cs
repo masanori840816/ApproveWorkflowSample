@@ -5,11 +5,7 @@ namespace ApprovementWorkflowSample.Applications
 {
     public interface IApplicationUsers
     {
-        Task<bool> SignInAsync(ApplicationUser user, string password);
-        Task SignOutAsync();
-        Task<IdentityResult> CreateAsync(string userName, string? organization, string email, string password);
+        Task<ApplicationUser?> GetByIdAsync(int id);
         Task<ApplicationUser?> GetByEmailAsync(string email);
-        Task<bool> CheckDuplicateEmailUserExistsAsync(string email);
-        Task<bool> CheckDuplicateEmailUserExistsAsync(int userId, string email);
     }
 }
