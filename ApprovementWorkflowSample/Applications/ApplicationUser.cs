@@ -85,20 +85,15 @@ namespace ApprovementWorkflowSample.Applications
         }
         public string Validate()
         {
-            return Validate(UserName, Organization, Email, PasswordHash);
-        }
-        public string Validate(string userName, string? organization,
-            string email, string password)
-        {
-            if(string.IsNullOrEmpty(userName))
+            if(string.IsNullOrEmpty(UserName))
             {
                 return "UserName is required";
             }
-            if(string.IsNullOrEmpty(email))
+            if(string.IsNullOrEmpty(Email))
             {
                 return "E-Mail address is required";
             }
-            if(string.IsNullOrEmpty(password))
+            if(string.IsNullOrEmpty(PasswordHash))
             {
                 return "Password is required";
             }

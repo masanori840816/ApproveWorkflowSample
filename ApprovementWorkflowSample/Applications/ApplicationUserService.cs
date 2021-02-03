@@ -2,7 +2,6 @@ using System.Security.Claims;
 using System;
 using System.Threading.Tasks;
 using ApprovementWorkflowSample.Applications.Dto;
-using ApprovementWorkflowSample.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
@@ -12,19 +11,16 @@ namespace ApprovementWorkflowSample.Applications
     public class ApplicationUserService: IApplicationUserService
     {
         private readonly ILogger<ApplicationUsers> logger;
-        private readonly ApprovementWorkflowContext context;
         private readonly IApplicationUsers applicationUsers;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IHttpContextAccessor httpContextAccessor;
 
         public ApplicationUserService(ILogger<ApplicationUsers> logger,
-            ApprovementWorkflowContext context,
             IApplicationUsers applicationUsers,
             SignInManager<ApplicationUser> signInManager,
             IHttpContextAccessor httpContextAccessor)
         {
             this.logger = logger;
-            this.context = context;
             this.applicationUsers = applicationUsers;
             this.signInManager = signInManager;
             this.httpContextAccessor = httpContextAccessor;
@@ -33,11 +29,6 @@ namespace ApprovementWorkflowSample.Applications
         {
             var newUser = new ApplicationUser();
             newUser.Update(userName, organization, email, password);
-            string validationError = newUser.Validate();
-            if (string.IsNullOrEmpty(validationError) == false)
-            {
-                return IdentityResult.Failed(new IdentityError { Description = validationError });
-            }
             return await signInManager.UserManager.CreateAsync(newUser);
         }
         public async ValueTask<User?> GetSignInUserAsync()

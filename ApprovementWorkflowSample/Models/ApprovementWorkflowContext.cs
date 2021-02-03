@@ -14,6 +14,9 @@ namespace ApprovementWorkflowSample.Models
             modelBuilder.Entity<ApplicationUser>()
                 .Property(w => w.LastUpdateDate)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            modelBuilder.Entity<ApplicationUser>()
+                .HasIndex(u => u.Email)
+                .IsUnique();                
         }
         public DbSet<ApplicationUser> ApplicationUsers => Set<ApplicationUser>();
     }
