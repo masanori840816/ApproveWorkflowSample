@@ -65,5 +65,44 @@ namespace ApprovementWorkflowSample.Applications
         public override bool TwoFactorEnabled { get; set; }
         [NotMapped]
         public override bool PhoneNumberConfirmed { get; set; }
+        
+        public void Update(ApplicationUser user)
+        {
+            UserName = user.UserName;
+            Organization = user.Organization;
+            Email = user.Email;
+            PasswordHash = user.PasswordHash;
+        }
+        public void Update(string userName, string? organization,
+            string email, string password)
+        {
+            UserName = userName;
+            Organization = organization;
+            Email = email;
+            // set hashed password text to PasswordHash.
+            PasswordHash = new PasswordHasher<ApplicationUser>()
+                .HashPassword(this, password);
+        }
+        public string Validate()
+        {
+            return Validate(UserName, Organization, Email, PasswordHash);
+        }
+        public string Validate(string userName, string? organization,
+            string email, string password)
+        {
+            if(string.IsNullOrEmpty(userName))
+            {
+                return "UserName is required";
+            }
+            if(string.IsNullOrEmpty(email))
+            {
+                return "E-Mail address is required";
+            }
+            if(string.IsNullOrEmpty(password))
+            {
+                return "Password is required";
+            }
+            return "";
+        }
     }
 }

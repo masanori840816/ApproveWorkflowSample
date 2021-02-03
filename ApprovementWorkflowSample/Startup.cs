@@ -1,10 +1,12 @@
-using ApprovementWorkflowSample.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ApprovementWorkflowSample.Applications;
+using ApprovementWorkflowSample.Models;
 
 namespace ApprovementWorkflowSample
 {
@@ -22,6 +24,13 @@ namespace ApprovementWorkflowSample
                 .AddNewtonsoftJson();
             services.AddDbContext<ApprovementWorkflowContext>(options =>
                 options.UseNpgsql(configuration["DbConnection"]));
+            
+            services.AddIdentity<ApplicationUser, IdentityRole<int>>()
+                .AddUserStore<ApplicationUserStore>()
+                .AddEntityFrameworkStores<ApprovementWorkflowContext>()
+                .AddDefaultTokenProviders();
+            services.AddScoped<IApplicationUsers, ApplicationUsers>();
+            services.AddScoped<IApplicationUserService, ApplicationUserService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -32,6 +41,9 @@ namespace ApprovementWorkflowSample
             }
             app.UseStaticFiles();
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
