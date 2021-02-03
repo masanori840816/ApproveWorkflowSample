@@ -17,11 +17,11 @@ namespace ApprovementWorkflowSample.Controllers
             this.logger = logger;
             this.users = users;
         }
-        [Route("")]
+        /*[Route("")]
         public async Task<User?> ShowSignInUserName()
         {
             return await users.GetSignInUserAsync();
-        }
+        }*/
         [Route("Users/SignIn")]
         public async ValueTask<bool> SignIn(string email, string password)
         {

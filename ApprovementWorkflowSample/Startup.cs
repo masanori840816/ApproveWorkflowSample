@@ -20,6 +20,7 @@ namespace ApprovementWorkflowSample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddServerSideBlazor();
             services.AddControllers()
                 .AddNewtonsoftJson();
             services.AddDbContext<ApprovementWorkflowContext>(options =>
@@ -47,6 +48,7 @@ namespace ApprovementWorkflowSample
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapBlazorHub();
                 endpoints.MapControllers();
             });
         }
