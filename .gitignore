@@ -2,5 +2,7 @@ bin
 obj
 .vs
 .vscode
+node_modules
+ApprovementWorkflowSample/wwwroot/js/*
 appsettings.Development.json
 appsettings.Production.json
