@@ -21,6 +21,9 @@ namespace ApprovementWorkflowSample
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddHttpClient();
+            services.AddAuthentication("Identity.Application")
+                .AddCookie();
             services.AddControllers()
                 .AddNewtonsoftJson();
             services.AddDbContext<ApprovementWorkflowContext>(options =>

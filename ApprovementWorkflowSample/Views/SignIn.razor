@@ -3,10 +3,10 @@
     <div id="sign_in_frame">
         <h1>Sign In</h1>
         <div class="sign_in_input_container">
-            <input type="text" @bind="Email" class="sign_in_input">
+            <input type="text" @bind="Email" class="sign_in_input @AdditionalClassName">
         </div>
         <div class="sign_in_input_container">
-            <input type="password" @bind="Password" class="sign_in_input">
+            <input type="password" @bind="Password" class="sign_in_input @AdditionalClassName">
         </div>
         <div id="sign_in_controller_container">
             <button @onclick="StartSigningIn">Sign In</button>

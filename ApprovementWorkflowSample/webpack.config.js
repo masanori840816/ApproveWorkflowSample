@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
     mode: 'development',
     entry: {
-        'signInPage': './ts/signIn.page.ts',
+        'messageAction': './ts/message.action.ts',
     },
     module: {
         rules: [

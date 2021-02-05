@@ -22,15 +22,16 @@ namespace ApprovementWorkflowSample.Controllers
         {
             return await users.GetSignInUserAsync();
         }*/
+        [HttpPost]
         [Route("Users/SignIn")]
-        public async ValueTask<bool> SignIn(string email, string password)
+        public async ValueTask<bool> SignIn([FromBody]SignInValue value)
         {
-            if(string.IsNullOrEmpty(email) ||
-                string.IsNullOrEmpty(password))
+            if(string.IsNullOrEmpty(value.Email) ||
+                string.IsNullOrEmpty(value.Password))
             {
                 return false;
             }
-            return await users.SignInAsync(email, password);
+            return await users.SignInAsync(value.Email, value.Password);
         }
         [Route("Users/SignOut")]
         public async Task SignOutAsync()
