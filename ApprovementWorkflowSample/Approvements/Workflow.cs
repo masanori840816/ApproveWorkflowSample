@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApprovementWorkflowSample.Approvements
 {
-    public class Workflow
+    public record Workflow
     {
         [Key]
         [Column("id")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; init; }
         [Required]
         [Column("title")]
@@ -19,6 +20,7 @@ namespace ApprovementWorkflowSample.Approvements
         public int WorkflowTypeId { get; init; }
         [Required]
         [Column("last_update_date", TypeName = "timestamp with time zone")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime LastUpdateDate { get; init; }
         public WorkflowType? WorkflowType { get; init; }
         public List<ApproverGroup> ApproverGroups { get; init; } = new List<ApproverGroup>();

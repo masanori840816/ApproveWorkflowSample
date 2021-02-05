@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApprovementWorkflowSample.Approvements
 {
-    public class ApproverRole
+    public record ApproverRole
     {
         [Key]
         [Column("id")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; init; }
         [Required]
         [Column("name")]

@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApprovementWorkflowSample.Approvements
 {
-    public class ApproverGroup
+    public record ApproverGroup
     {
         [Key]
         [Column("id")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; init; }
         [Required]
         [Column("workflow_id")]

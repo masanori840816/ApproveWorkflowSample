@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApprovementWorkflowSample.Approvements
 {
-    public class Approver
+    public record Approver
     {
         [Key]
         [Column("id")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; init; }
         [Required]
         [Column("name")]
@@ -22,6 +23,7 @@ namespace ApprovementWorkflowSample.Approvements
         public int ApproverRoleId { get; init; }
         [Required]
         [Column("last_update_date", TypeName = "timestamp with time zone")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime LastUpdateDate { get; init; }
 
         public ApproverGroup? ApproverGroup { get; init; }
