@@ -1,6 +1,6 @@
 using System;
 
-namespace BlazorSample.Views.Shared
+namespace ApprovementWorkflowSample.Views.Shared
 {
     public partial class MainLayout
     {
