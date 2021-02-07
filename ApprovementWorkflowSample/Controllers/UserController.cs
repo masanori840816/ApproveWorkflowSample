@@ -22,22 +22,6 @@ namespace ApprovementWorkflowSample.Controllers
         {
             return await users.GetSignInUserAsync();
         }*/
-        [HttpPost]
-        [Route("Users/SignIn")]
-        public async ValueTask<bool> SignIn([FromBody]SignInValue value)
-        {
-            if(string.IsNullOrEmpty(value.Email) ||
-                string.IsNullOrEmpty(value.Password))
-            {
-                return false;
-            }
-            return await users.SignInAsync(value.Email, value.Password);
-        }
-        [Route("Users/SignOut")]
-        public async Task SignOutAsync()
-        {
-            await users.SignOutAsync();
-        }
         [Route("Users/Sample")]
         public async Task<IdentityResult> CreateSampleUser(string userName, string email)
         {
