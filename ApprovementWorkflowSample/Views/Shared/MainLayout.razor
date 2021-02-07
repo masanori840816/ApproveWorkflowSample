@@ -1,3 +1,9 @@
 @inherits LayoutComponentBase
-
+<CascadingAuthenticationState>
+    <AuthorizeView>
+        <Authorized>
+            <button @onclick="SignOutAsync">SignOut</button>
+        </Authorized>
+    </AuthorizeView>
+</CascadingAuthenticationState>
 @Body

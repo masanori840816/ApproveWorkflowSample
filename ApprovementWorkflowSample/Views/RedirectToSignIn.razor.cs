@@ -13,8 +13,8 @@ namespace ApprovementWorkflowSample.Views
         protected override async Task OnInitializedAsync()
         {
             var authenticationState = await AuthenticationStateTask!;
-
-            if (authenticationState?.User?.Identity is null || !authenticationState.User.Identity.IsAuthenticated)
+            if (authenticationState?.User?.Identity is null ||
+                    authenticationState.User.Identity.IsAuthenticated == false)
             {
                 var returnUrl = Navigation!.ToBaseRelativePath(Navigation.Uri);
                 if (string.IsNullOrWhiteSpace(returnUrl))

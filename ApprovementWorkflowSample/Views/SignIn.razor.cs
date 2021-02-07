@@ -1,3 +1,4 @@
+using System.Xml.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -53,14 +54,12 @@ namespace ApprovementWorkflowSample.Views
             if(loginResult.Succeeded)
             {
                 ClaimsPrincipal principal = await SignInManager.CreateUserPrincipalAsync(user);
-                ClaimsIdentity identity = new ClaimsIdentity(principal.Claims,
-                        CookieAuthenticationDefaults.AuthenticationScheme);
                 SignInManager.Context.User = principal;
                 HostAuthentication!.SetAuthenticationState(
                     Task.FromResult(new AuthenticationState(principal)));
 
-                AuthenticationState authState = await AuthenticationStateProvider!.GetAuthenticationStateAsync();
-            
+                //AuthenticationState authState = await AuthenticationStateProvider!.GetAuthenticationStateAsync();
+                
                 Navigation!.NavigateTo("/Pages/Edit");
             }
         }
