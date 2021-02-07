@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -14,7 +15,14 @@ namespace ApprovementWorkflowSample.Controllers
         [Route("Pages/{page}")]
         public IActionResult OpenPage(string page)
         {
+            logger.LogDebug("OpenPage " + page);
             return View("Views/_Host.cshtml");
+        }
+        [Authorize]
+        [Route("Sample")]
+        public string SampleMessage()
+        {
+            return "Hello";
         }
     }
 }

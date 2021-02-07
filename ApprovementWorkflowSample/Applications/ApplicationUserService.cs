@@ -69,6 +69,13 @@ namespace ApprovementWorkflowSample.Applications
         {
             await signInManager.SignOutAsync();
         }
-        
+        public async ValueTask<ApplicationUser?> GetUserByEmailAsync(string email)
+        {
+            if(string.IsNullOrEmpty(email))
+            {
+                return null;
+            }
+            return await applicationUsers.GetByEmailAsync(email);
+        }
     }
 }

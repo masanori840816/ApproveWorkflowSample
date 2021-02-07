@@ -11,5 +11,6 @@ namespace ApprovementWorkflowSample.Applications
         Task<bool> SignInAsync(string email, string password);
         Task SignOutAsync();
         ValueTask<User?> GetSignInUserAsync();
+        ValueTask<ApplicationUser?> GetUserByEmailAsync(string email);
     }
 }
