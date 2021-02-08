@@ -21,6 +21,8 @@ namespace ApprovementWorkflowSample.Approvements
         [Column("approver_role_id")]
         [ForeignKey("ApproverRole")]
         public int ApproverRoleId { get; init; }
+        [Column("approved_date", TypeName = "date")]
+        public DateTime? ApprovedDate { get; set; }
         [Required]
         [Column("last_update_date", TypeName = "timestamp with time zone")]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
