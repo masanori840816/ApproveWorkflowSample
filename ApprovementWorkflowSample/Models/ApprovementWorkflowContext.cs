@@ -76,5 +76,10 @@ namespace ApprovementWorkflowSample.Models
             );
         }
         public DbSet<ApplicationUser> ApplicationUsers => Set<ApplicationUser>();
+        public DbSet<Workflow> Workflows => Set<Workflow>();
+        public DbSet<WorkflowType> WorkflowTypes => Set<WorkflowType>();
+        public DbSet<ApproverRole> ApproverRoles => Set<ApproverRole>();
+        public DbSet<ApproverGroup> ApproverGroups => Set<ApproverGroup>();
+        public DbSet<Approver> Approvers => Set<Approver>();
     }
 }

@@ -9,6 +9,7 @@ using ApprovementWorkflowSample.Applications;
 using ApprovementWorkflowSample.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
+using ApprovementWorkflowSample.Approvements;
 
 namespace ApprovementWorkflowSample
 {
@@ -38,7 +39,9 @@ namespace ApprovementWorkflowSample
                 (ServerAuthenticationStateProvider) sp.GetRequiredService<AuthenticationStateProvider>()
             );
             services.AddScoped<IApplicationUsers, ApplicationUsers>();
+            services.AddScoped<IWorkflows, Workflows>();
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
+            services.AddScoped<IApprovementService, ApprovementService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
