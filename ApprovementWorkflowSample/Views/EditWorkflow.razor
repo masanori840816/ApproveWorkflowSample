@@ -4,6 +4,12 @@
 <div>
     <div>
         <input type="text" @bind="WorkflowTitle">
-        
+        <select @bind="SelectedWorkflowTypeId">
+            @foreach (var workflowType in WorkflowTypes)
+            {
+                <option value="@workflowType.Id">@workflowType.Name</option>
+            }
+        </select>
+        <button @onclick="Check">Check</button>
     </div>
 </div>

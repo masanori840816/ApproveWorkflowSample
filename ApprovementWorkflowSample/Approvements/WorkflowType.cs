@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApprovementWorkflowSample.Approvements
 {
+    [Table("WorkflowType")]
     public record WorkflowType
     {
         [Key]

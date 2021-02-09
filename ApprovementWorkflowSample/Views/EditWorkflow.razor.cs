@@ -21,6 +21,8 @@ namespace ApprovementWorkflowSample.Views
         [Parameter]
         public string WorkflowTitle { get; set; } = "";
         [Parameter]
+        public int SelectedWorkflowTypeId { get; set; }
+        [Parameter]
         public List<WorkflowType> WorkflowTypes { get; set; } = new List<WorkflowType>(); 
         private DisplayWorkflow? currentWorkflow;
         protected override async Task OnInitializedAsync()
@@ -38,6 +40,11 @@ namespace ApprovementWorkflowSample.Views
             }
             WorkflowTitle = currentWorkflow.Title;
             WorkflowTypes = await ApprovementService!.GetAllWorkflowTypeAsync();
+            Console.WriteLine("Types " + WorkflowTypes.Count);
+        }
+        public void Check()
+        {
+            Console.WriteLine($"Title: {WorkflowTitle} Type: {SelectedWorkflowTypeId}");
         }
     }
 }
